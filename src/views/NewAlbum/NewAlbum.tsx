@@ -7,6 +7,11 @@ import { FaSpotify } from 'react-icons/fa6';
 
 import { Button } from '@/components/ui/button';
 import useGetData from '@/hooks/useGetData';
+import {
+  AlbumCoverSkeleton,
+  AlbumNameSkeleton,
+  AlbumStreamButtonSkeleton,
+} from '@/views/NewAlbum/NewAlbumSkeleton';
 
 const NewAlbumView = () => {
   const { data, isLoading } = useGetData<{
@@ -31,16 +36,12 @@ const NewAlbumView = () => {
       <div className="relative z-10">
         <div className="border-b-2 border-solid border-white mb-3">
           <h1 className="text-white text-4xl uppercase font-archivo-black mb-4">
-            {isLoading ? (
-              <div className="w-[300px] h-[40px] bg-amber-50" />
-            ) : (
-              data?.name
-            )}
+            {isLoading ? <AlbumNameSkeleton /> : data?.name}
           </h1>
         </div>
         <p className="text-white uppercase font-archivo mb-2">Available now</p>
         {isLoading ? (
-          <p>wait</p>
+          <AlbumStreamButtonSkeleton />
         ) : (
           <Button
             className="bg-inRainbows-green text-black hover:bg-green-700 hover:text-black"
@@ -57,7 +58,7 @@ const NewAlbumView = () => {
         )}
       </div>
       {isLoading ? (
-        <div className=" w-[400px] h-[400px] bg-amber-50" />
+        <AlbumCoverSkeleton />
       ) : (
         <Image
           className="border-4 border-white border-solid relative z-10"

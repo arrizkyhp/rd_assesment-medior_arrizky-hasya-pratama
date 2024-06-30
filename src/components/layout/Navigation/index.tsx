@@ -9,19 +9,19 @@ const Navigation = () => (
     <div className="flex relative gap-5">
       <Link
         href="/#newest-album"
-        className="text-inRainbows-yellow uppercase font-archivo font-semibold"
+        className="text-inRainbows-yellow uppercase font-archivo font-semibold hover:underline"
       >
         Newest Album
       </Link>
       <Link
         href="/#discography"
-        className="text-inRainbows-blue uppercase font-archivo font-semibold"
+        className="text-inRainbows-blue uppercase font-archivo font-semibold hover:underline"
       >
         Discography
       </Link>
       <Link
         href="/#follow"
-        className="text-inRainbows-red uppercase font-archivo font-semibold"
+        className="text-inRainbows-red uppercase font-archivo font-semibold hover:underline"
       >
         Follow
       </Link>

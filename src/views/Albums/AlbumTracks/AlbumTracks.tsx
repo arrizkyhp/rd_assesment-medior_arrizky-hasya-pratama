@@ -4,7 +4,7 @@ import { FaPlay } from 'react-icons/fa6';
 
 import { Button } from '@/components/ui/button';
 import type { AlbumDetailsTypes } from '@/views/Albums/AlbumDetails.types';
-import AlbumTracksSkeleton from '@/views/Albums/AlbumTracks/AlbumTracksSkeleton';
+import AlbumTracksSkeleton from '@/views/Albums/AlbumTracks/AlbumTracks.skeleton';
 
 const AlbumTracks = (props: AlbumDetailsTypes) => {
   const { albumData, isLoading } = props;
@@ -15,8 +15,21 @@ const AlbumTracks = (props: AlbumDetailsTypes) => {
     return `${minutes}:${Number(seconds) < 10 ? '0' : ''}${seconds}`;
   };
 
+  const handleShare = (trackName: string, trackUrl: string) => {
+    if (navigator.share) {
+      navigator.share({
+        title: `Check out this track: ${trackName}`,
+        text: `I'm listening to ${trackName} by Radiohead. Check it out!`,
+        url: trackUrl,
+      });
+    }
+  };
+
   return (
-    <section className="flex bg-radiohead-3 bg-cover bg-center items-center pt-24 pb-32 flex-col min-h-[calc(100vh-96px)] font-archivo px-10">
+    <section
+      id="track-list"
+      className="flex bg-radiohead-3 bg-cover bg-center items-center pt-24 pb-32 flex-col min-h-[calc(100vh-96px)] font-archivo px-10"
+    >
       <h1 className="text-4xl font-archivo-black text-white mb-10">
         Track List
       </h1>
@@ -46,6 +59,7 @@ const AlbumTracks = (props: AlbumDetailsTypes) => {
                   className="bg-transparent hover:bg-inRainbows-blue"
                   size="sm"
                   variant="default"
+                  onClick={() => handleShare(track.name, window.location.href)}
                 >
                   Share
                 </Button>
