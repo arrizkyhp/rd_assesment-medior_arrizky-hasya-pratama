@@ -2,7 +2,7 @@ import useSWR from 'swr';
 
 import defaultFetcherFn from '@/helpers';
 import type { FetchQueryExtras } from '@/types/queries';
-import noop from '@/utils';
+import { noop } from '@/utils';
 
 const useGetData = <T>(
   key: string,

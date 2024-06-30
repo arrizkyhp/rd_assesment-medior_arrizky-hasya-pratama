@@ -1,3 +1,4 @@
+import formatDate from './formatDate';
 import noop from './noop';
 
-export default noop;
+export { formatDate, noop };
