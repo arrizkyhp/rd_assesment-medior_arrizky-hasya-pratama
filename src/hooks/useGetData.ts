@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-import { defaultFetcherFn } from '@/helpers';
+import defaultFetcherFn from '@/helpers';
 import type { FetchQueryExtras } from '@/types/queries';
 import noop from '@/utils';
 
