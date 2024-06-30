@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     domains: ['i.scdn.co'],
   },
-ign  eslint: {
+  eslint: {
     ignoreDuringBuilds: true,
   },
 };
