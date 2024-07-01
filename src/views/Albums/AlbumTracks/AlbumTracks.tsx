@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import { FaPause, FaPlay } from 'react-icons/fa6';
 
 import { Button } from '@/components/ui/button';
@@ -10,18 +8,9 @@ import useAlbumTrack from '@/views/Albums/AlbumTracks/AlbumTrack.hooks';
 import AlbumTracksSkeleton from '@/views/Albums/AlbumTracks/AlbumTracks.skeleton';
 
 const AlbumTracks = (props: AlbumDetailsTypes) => {
-  const { albumData, isLoading } = props;
-  const { formatDuration, handleShare } = useAlbumTrack();
-
-  const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
-
-  const handlePlayPause = (trackId: string) => {
-    if (currentTrackId === trackId) {
-      setCurrentTrackId(null);
-    } else {
-      setCurrentTrackId(trackId);
-    }
-  };
+  const { albumData, isLoading, backgroundImage } = props;
+  const { currentTrackId, formatDuration, handleShare, handlePlayPause } =
+    useAlbumTrack({ albumData, backgroundImage });
 
   return (
     <section
