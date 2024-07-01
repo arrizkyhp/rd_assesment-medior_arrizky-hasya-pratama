@@ -1,6 +1,8 @@
 'use client';
 
-import { FaPlay } from 'react-icons/fa6';
+import { useState } from 'react';
+
+import { FaPause, FaPlay } from 'react-icons/fa6';
 
 import { Button } from '@/components/ui/button';
 import type { AlbumDetailsTypes } from '@/views/Albums/AlbumDetails.types';
@@ -10,6 +12,16 @@ import AlbumTracksSkeleton from '@/views/Albums/AlbumTracks/AlbumTracks.skeleton
 const AlbumTracks = (props: AlbumDetailsTypes) => {
   const { albumData, isLoading } = props;
   const { formatDuration, handleShare } = useAlbumTrack();
+
+  const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
+
+  const handlePlayPause = (trackId: string) => {
+    if (currentTrackId === trackId) {
+      setCurrentTrackId(null);
+    } else {
+      setCurrentTrackId(trackId);
+    }
+  };
 
   return (
     <section
@@ -26,14 +38,15 @@ const AlbumTracks = (props: AlbumDetailsTypes) => {
           albumData?.tracks?.items.map((track, index) => (
             <li
               key={track.id}
-              className="flex font-archivo-black text-white border-b border-solid border-white  p-2 justify-between"
+              className={`flex font-archivo-black text-white border-b border-solid border-white  p-2 justify-between ${currentTrackId === track.id ? 'bg-neutral-800' : ''}`}
             >
               <div className="flex gap-2 items-center">
                 <Button
                   className="bg-transparent hover:bg-inRainbows-green"
                   size="sm"
+                  onClick={() => handlePlayPause(track.id)}
                 >
-                  <FaPlay />
+                  {currentTrackId === track.id ? <FaPause /> : <FaPlay />}
                 </Button>
                 <span>{index + 1}.</span>
                 <span>{track.name}</span>
