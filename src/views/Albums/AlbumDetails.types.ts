@@ -7,6 +7,7 @@ export type AlbumDetailsTypes = {
     album_type?: string;
     label?: string;
     total_tracks?: string;
+    external_urls?: { spotify: string };
   };
   images?: Array<{ url: string }>;
   backgroundImage?: string;

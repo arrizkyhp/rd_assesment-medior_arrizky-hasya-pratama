@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -5,13 +7,14 @@ import toast from 'react-hot-toast';
 import { FaPause } from 'react-icons/fa6';
 
 import { Button } from '@/components/ui/button';
+import { useTrackContext } from '@/contexts/TrackContext';
 import type { AlbumDetailsTypes } from '@/views/Albums/AlbumDetails.types';
 
 const useAlbumTrack = (props: AlbumDetailsTypes) => {
   const { albumData, backgroundImage } = props;
 
   const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
-  const [toastId, setToastId] = useState<string | null>(null);
+  const { toastId, setToastId } = useTrackContext();
 
   const formatDuration = (durationMs: string) => {
     const minutes = Math.floor(Number(durationMs) / 60000);

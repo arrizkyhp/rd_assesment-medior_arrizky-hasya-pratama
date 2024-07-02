@@ -89,7 +89,7 @@ const AlbumDetailsIntro = (props: AlbumDetailsTypes) => {
         </div>
         <div className="flex z-20 font-archivo mt-6 gap-4">
           <Button
-            className="bg-inRainbows-blue flex gap-1 text-black"
+            className="bg-inRainbows-blue hover:bg-blue-500 flex gap-1 text-black"
             variant="default"
             onClick={handleShare}
           >
@@ -97,11 +97,17 @@ const AlbumDetailsIntro = (props: AlbumDetailsTypes) => {
             Share
           </Button>
           <Button
-            className="bg-inRainbows-green flex gap-1 text-black"
+            className="bg-inRainbows-green hover:bg-green-600 flex gap-1 text-black"
             variant="default"
           >
-            <FaSpotify />
-            Listen
+            <Link
+              className="flex items-center gap-2"
+              target="_blank"
+              href={albumData?.external_urls?.spotify || ''}
+            >
+              <FaSpotify />
+              Listen
+            </Link>
           </Button>
         </div>
       </div>

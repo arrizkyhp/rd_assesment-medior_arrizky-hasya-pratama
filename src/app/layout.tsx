@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { archivo, archivoBlack, inter } from '@/assets/fonts';
 import Layout from '@/components/layout/Layout';
+import { TrackProvider } from '@/contexts/TrackContext';
 
 import './globals.css';
 
@@ -19,7 +20,9 @@ const RootLayout = ({
     <body
       className={`${inter.className} ${archivo.variable} ${archivoBlack.variable} relative`}
     >
-      <Layout>{children}</Layout>
+      <TrackProvider>
+        <Layout>{children}</Layout>
+      </TrackProvider>
     </body>
   </html>
 );
